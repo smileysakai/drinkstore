@@ -1,0 +1,12 @@
+{% extends "drinks/layout.html" %}
+{% block body %}
+        <h1>Drinks</h1>
+        <ul>
+            {% for drink in drinks %}
+                <li><a href="{% url 'drink' drink.id %}">{{drink.name}}</a></li>
+            {% empty %}
+                <li>No drinks</li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'add' %}">Add a new drink</a>
+{% endblock %}

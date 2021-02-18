@@ -1,0 +1,15 @@
+{% extends "drinks/layout.html" %}
+
+{% block body %}
+    <h1>Drink {{drink.name}}</h1>
+    <img src="{{ drink.upload.url }}">
+    <ul>
+        <li>Price: ${{drink.price}}</li>
+        <li>Catgory: {{drink.category}}</li>
+        <li>Description: {{drink.description}} </li>
+        <li>Ingredients: {{drink.ingredients}} </li>
+    </ul>
+    
+    <a href="{% url 'index' %}">Back to Drinks List</a>
+        
+{% endblock %}

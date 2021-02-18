@@ -1,0 +1,10 @@
+{% extends "drinks/layout.html" %}
+{% block body %}
+        <h1>Add Drink</h1>
+        <form action="{%url 'add' %}" enctype="multipart/form-data" method="post">
+            {% csrf_token %}
+            {{form}}
+            <input type="submit">
+        </form>
+        <a href="{% url 'index' %}">View Drinks List</a>
+{% endblock %}
