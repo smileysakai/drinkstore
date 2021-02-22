@@ -1,0 +1,29 @@
+{% extends "drinks/layout.html" %}
+{% block body %}
+        {% if test%}
+            <div>{{test}}</div>
+        {% endif %}
+        <h1>My Cart</h1>
+        <div class='row'>
+            {% for key, value in cart.items %}
+                <div class='col-3'>Image Here {{key}}</div>   
+                <div class='col-9'>{{value.name}}</div>  
+                <div class='col-4'>
+                  <form action="{% url 'update_cartitem' key %}" method="post">
+                        {% csrf_token %}
+                        <input type="number" name="quantity" min="0" value="{{value.quantity}}">
+                        <input type="submit" value="Update Quantity">
+                    </form>    
+                </div>
+                <div class='col-4'>{{value.price}}</div>
+                <div class='col-4'>{{value.total_price}}</div>
+                <form action="{% url 'delete_cartitem' key %}" method="post">
+                        {% csrf_token %}
+                        <input type="submit" value="Remove from Cart">
+                </form>  
+            {% empty %}
+                <li>No drinks</li>
+            {% endfor %}
+        </div>
+        <a href="{% url 'index' %}">Back to Drinks List</a>
+{% endblock %}

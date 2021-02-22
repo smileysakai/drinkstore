@@ -1,0 +1,9 @@
+<div id="sidebar-cart">
+    <h1>Cart</h1>
+        {% for key, value in cart.items %}
+            <p>drink: {{ value.name }}, price: ${{ value.price }}, quantity:{{value.quantity}}, total_price: ${{value.total_price}}</p>
+        {% empty %}
+            <p>No items</p>
+        {% endfor %}
+        <a href="{% url 'view_cart' %}">View/Update Cart</a>
+</div>

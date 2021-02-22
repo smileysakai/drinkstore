@@ -1,6 +1,9 @@
 {% extends "drinks/layout.html" %}
 
 {% block body %}
+    {% if message%}
+        <div>{{message}}</div>
+    {% endif %}
     <h1>Drink {{drink.name}}</h1>
     <img src="{{ drink.upload.url }}">
     <ul>
@@ -9,7 +12,11 @@
         <li>Description: {{drink.description}} </li>
         <li>Ingredients: {{drink.ingredients}} </li>
     </ul>
-    
+    <form action="{% url 'add_to_cart' drink.id %}" method="post">
+        {% csrf_token %}
+        <input type="number" name="quantity" min="0">
+        <input type="submit">
+    </form>
     <a href="{% url 'index' %}">Back to Drinks List</a>
-        
+    {% include "drinks/mini_cart.html" %}
 {% endblock %}

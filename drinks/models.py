@@ -12,8 +12,8 @@ class Drink(models.Model):
     category = models.ForeignKey(Beverage, on_delete = models.CASCADE, related_name="classification")
     name = models.CharField(max_length=64)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    description = models.TextField()
-    ingredients = models.TextField()
+    description = models.TextField(blank=True,default='')
+    ingredients = models.TextField(blank=True, default='')
     upload = models.FileField(upload_to='uploads/')
     
     def __str__(self):
