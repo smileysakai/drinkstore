@@ -1,4 +1,11 @@
 # drinkstore
+Pre-requisties to run:
+Follow steps as per "installing an official release with pip".
+
+Running this app:
+Step 2 of the above pre-requisite must be run first unless python path variable has been set
+Navigate to appropriate folder and run Django app.
+
 Drink store current functions
 1. Add drinks with picture
 2. Add drinks to cart session
