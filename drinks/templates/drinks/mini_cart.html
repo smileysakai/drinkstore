@@ -5,5 +5,6 @@
         {% empty %}
             <p>No items</p>
         {% endfor %}
-        <a href="{% url 'view_cart' %}">View/Update Cart</a>
+            <p>Total Price: ${{cart_total_price}}</p>
+        <a href="{% url 'view_cart' %}">Checkout Cart</a>
 </div>
