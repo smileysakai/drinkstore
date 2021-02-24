@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Drink, Beverage
+from .models import Drink
 
 class DrinkForm(ModelForm):
     class Meta:
