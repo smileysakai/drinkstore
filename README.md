@@ -22,3 +22,5 @@ Drink store current functions
    Sandbox Customer Account:
    sb-ic3im5206604@personal.example.com
    Password: Bn=W/K5F
+   
+![Alt text](media/uploads/cola.jpg?raw=true "Title")
