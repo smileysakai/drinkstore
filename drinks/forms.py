@@ -5,3 +5,4 @@ class DrinkForm(ModelForm):
     class Meta:
         model = Drink
         fields = ['category','name', 'price','description','ingredients','upload']
+        

@@ -1,37 +1,71 @@
 {% extends "drinks/layout.html" %}
 {% block body %}
-        <script
-            src="https://www.paypal.com/sdk/js?client-id=AZci21POXG3JTRRsL0Lt_FY2m43muEA36bKYKOvATmhRmiNfWqOtG_JV3RJymqtjrIKTL2-9nw_R844k&currency=AUD"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
-        </script>
-        {% if test%}
-            <div>{{test}}</div>
-        {% endif %}
-        <h1>My Cart</h1>
-        <div class='row'>
-            {% for key, value in cart.items %}
-                <div class='col-3'>Image Here {{key}}</div>   
-                <div class='col-9 product-name'>{{value.name}}</div>  
-                <div class='col-4'>
-                  <form action="{% url 'update_cartitem' key %}" method="post">
-                        {% csrf_token %}
-                        <input type="number" name="quantity" min="0" value="{{value.quantity}}">
-                        <input type="submit" value="Update Quantity">
-                    </form>    
-                </div>
-                <div class='col-4'>*Unit Price: ${{value.price}}</div>
-                <div class='col-4'>=Item Total Price: ${{value.total_price}}</div>
-                <form action="{% url 'delete_cartitem' key %}" method="post">
-                        {% csrf_token %}
-                        <input type="submit" value="Remove from Cart">
-                </form>  
-            {% empty %}
-                <li>No drinks</li>
-            {% endfor %}
-            <div>Cart Total Price = ${{cart_total_price}}</div>
-            <div id="paypal-button-container"></div>
-        </div>
-            <a href="{% url 'index' %}">Back to Drinks List</a>
-  <script>    
+	<script
+		src="https://www.paypal.com/sdk/js?client-id=AZci21POXG3JTRRsL0Lt_FY2m43muEA36bKYKOvATmhRmiNfWqOtG_JV3RJymqtjrIKTL2-9nw_R844k&currency=AUD"> // Required. Replace SB_CLIENT_ID with your sandbox client ID.
+	</script>
+	{% if test%}
+		<div>{{test}}</div>
+	{% endif %}
+	<div class="container">
+		<div class="row">
+			<a href="{% url 'index' %}">Back to Drinks List</a>
+		</div>
+		<div class="row">
+			<h1>My Cart</h1>
+		</div>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th scope="col">Drink Name</th>
+					<th scope="col">Unit Price</th>
+					<th scope="col">Quantity</th>
+					<th scope="col">Total Price</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for key, value in cart.items %}
+				<tr>
+					<th scope="row">{{ value.name }}</th>
+					<td>${{ value.price }}</td> 
+					<td>
+						<form action="{% url 'update_cartitem' key %}" method="post">
+							{% csrf_token %}
+							<div class="input-group mb-3">
+								<input type="number" name="quantity" min="0" value="{{value.quantity}}" class="form-control">
+								<input type="submit" value="Update Quantity" class="btn btn-outline-secondary">
+							</div>
+						</form>    
+					</td>
+					<td class="table-active">
+						
+						<form action="{% url 'delete_cartitem' key %}" method="post">
+							{% csrf_token %}
+							<div class="input-group mb-3">
+								<input class="form-control" value="${{value.total_price}}" disabled></input>
+								<input type="submit" value="Remove" class="btn btn-outline-secondary">
+							</div>
+						</form>
+					</td>
+				</tr>
+				{% empty %}
+				<tr>
+					<th colspan="4" class="table-danger">No items</th>
+				</tr>
+				{% endfor %}
+				{% if cart_total_price > 0 %}
+				<tr>
+					<th scope="row" class="table-warning">Total Cart Price</th>
+					<td colspan="2"></th>
+					<td colspan="1" class="table-success"><strong>${{cart_total_price}}</strong></td>
+				</tr>
+				{% endif %}
+			</tbody>
+		</table>
+		{% if cart %}
+		<div id="paypal-button-container" style="float: right;"></div>
+		{% endif %}
+	</div>
+	<script>    
         paypal.Buttons({
             createOrder: function(data, actions) {
                 // This function sets up the details of the transaction, including the amount and line item details.
@@ -64,6 +98,5 @@
                 });
             }
         }).render('#paypal-button-container');
-  </script>
-</body>
+	</script>
 {% endblock %}

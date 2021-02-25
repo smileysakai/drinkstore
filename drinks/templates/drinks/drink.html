@@ -4,19 +4,55 @@
     {% if message%}
         <div>{{message}}</div>
     {% endif %}
-    <h1>Drink {{drink.name}}</h1>
-    <img src="{{ drink.upload.url }}">
-    <ul>
-        <li>Price: ${{drink.price}}</li>
-        <li>Catgory: {{drink.category}}</li>
-        <li>Description: {{drink.description}} </li>
-        <li>Ingredients: {{drink.ingredients}} </li>
-    </ul>
-    <form action="{% url 'add_to_cart' drink.id %}" method="post">
-        {% csrf_token %}
-        <input type="number" name="quantity" min="0">
-        <input type="submit">
-    </form>
-    <a href="{% url 'index' %}">Back to Drinks List</a>
+	<div class="container overflow-hidden">
+		<div class="row">
+			<a href="{% url 'index' %}">Back to Drinks List</a>
+		</div>
+		<div class="row gx-5">
+			<div class="col">
+				<div class="p-3 border bg-light"><img src="{{ drink.upload.url }}" class="img-thumbnail"></div>
+			</div>
+			<div class="col">
+				<div class="p-3 border bg-light">
+					<div class="container">
+						<div class="row">
+							<div class="col">
+								<h3>{{drink.name}}</h3>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col">
+								<h4>${{drink.price}} per unit</h4>
+							</div>
+							<div class="col">
+								<form action="{% url 'add_to_cart' drink.id %}" method="post">
+									{% csrf_token %}
+									<div class="input-group mb-3">
+										{% if item_quantity > 0 %}
+											<input type="number" class="form-control" name="quantity" min="0" value="{{item_quantity}}">
+											<input type="submit" class="btn btn-outline-secondary" value="Update Cart">
+										{% else %}
+											<input type="number" class="form-control" name="quantity" min="0">
+											<input type="submit" class="btn btn-outline-secondary" value="Add to Cart">
+										{% endif %}
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="bg-light">
+		<div class="container">
+		<dl class="row">
+			<dt class="col-sm-3">Product Details</dt>
+			<dd class="col-sm-9">{{drink.description}}</dd>
+			<dt class="col-sm-3">Ingredients</dt>
+			<dd class="col-sm-9">{{drink.ingredients}}</dd>
+		</dl>
+		</div>
+	</div>
     {% include "drinks/mini_cart.html" %}
 {% endblock %}

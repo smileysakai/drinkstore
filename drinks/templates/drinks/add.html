@@ -1,10 +1,24 @@
 {% extends "drinks/layout.html" %}
 {% block body %}
-        <h1>Add Drink</h1>
+	<div class="container overflow-hidden">
+		<div class="row">
+			<a href="{% url 'index' %}">Back to Drinks List</a>
+		</div>
         <form action="{%url 'add' %}" enctype="multipart/form-data" method="post">
+			<legend>Add New Drink</legend>
             {% csrf_token %}
             {{form}}
             <input type="submit">
         </form>
-        <a href="{% url 'index' %}">View Drinks List</a>
+	</div>
+	<script>
+		$('form > label').each(function(){
+			$(this).next().addBack().wrapAll('<div class="mb-3"/>');
+		});		
+		$('label').addClass("form-label");
+		$('select').addClass("form-control");
+		$('input').addClass("form-control");
+		$('textarea').addClass("form-control");
+		$('textarea').attr('placeholder', 'Not required');
+	</script>
 {% endblock %}

@@ -1,10 +1,35 @@
-<div id="sidebar-cart">
-    <h1>Cart</h1>
-        {% for key, value in cart.items %}
-            <p>drink: {{ value.name }}, price: ${{ value.price }}, quantity:{{value.quantity}}, total_price: ${{value.total_price}}</p>
-        {% empty %}
-            <p>No items</p>
-        {% endfor %}
-            <p>Total Price: ${{cart_total_price}}</p>
-        <a href="{% url 'view_cart' %}">Checkout Cart</a>
+<div class="container" id="sidebar-cart">
+    <h1>Your Cart</h1>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th scope="col">Drink Name</th>
+				<th scope="col">Unit Price</th>
+				<th scope="col">Quantity</th>
+				<th scope="col">Total Price</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for key, value in cart.items %}
+			<tr>
+				<th scope="row">{{ value.name }}</th>
+				<td>${{ value.price }}</td> 
+				<td>{{value.quantity}}</td>
+				<td class="table-active">${{value.total_price}}</td>
+			</tr>
+			{% empty %}
+			<tr>
+				<th colspan="4" class="table-danger">No items</th>
+			</tr>
+			{% endfor %}
+			{% if cart_total_price > 0 %}
+			<tr>
+				<th scope="row" class="table-warning">Total Cart Price</th>
+				<td colspan="2"></th>
+				<td colspan="1" class="table-success"><strong>${{cart_total_price}}</strong></td>
+			</tr>
+			{% endif %}
+		</tbody>
+	</table>
+	<a href="{% url 'view_cart' %}" class="btn btn-outline-primary" style="float: right;">Checkout Cart</a>
 </div>

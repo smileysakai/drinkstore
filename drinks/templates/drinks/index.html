@@ -1,16 +1,35 @@
 {% extends "drinks/layout.html" %}
 {% block body %}
+		<div class="container">
         {% if message%}
             <div>{{message}}</div>
         {% endif %}
-        <h1>Drinks</h1>
-        <ul>
-            {% for drink in drinks %}
-                <li><a href="{% url 'drink' drink.id %}">{{drink.name}}</a></li>                
-            {% empty %}
-                <li>No drinks</li>
-            {% endfor %}
-        </ul>
-        <a href="{% url 'add' %}">Add a new drink</a>
+		<div class="row">
+			 <a href="{% url 'add' %}">Add a new drink</a>
+		</div>
+		<div class="row">
+			<h1>Drinks</h1>
+		</div>
+		<div class="card-group">
+			{% for drink in drinks %}
+				<div class="card text-center" style="width: 18rem;">
+					<a href="{% url 'drink' drink.id %}">
+						<img src="{{ drink.upload.url }}" class="img-thumbnail" alt="{{drink.name}}">
+					</a>
+					<div class="card-body">
+						<p class="card-text"><a href="{% url 'drink' drink.id %}">{{drink.name}}</a></p>
+					</div>
+				</div>
+			{% empty %}
+				<div class="card text-center" style="width: 18rem;">
+					<img src="/media/uploads/no_drink.png" class="img-thumbnail" alt="No Drinks">
+					<div class="card-body">
+						<p class="card-text">No Drinks Available</p>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+		</div>
         {% include "drinks/mini_cart.html" %}
+		
 {% endblock %}

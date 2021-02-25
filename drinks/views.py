@@ -11,6 +11,7 @@ def index(request):
     #del request.session['cart']
     if 'cart' not in request.session:
             request.session['cart'] = {}
+            cart_total_price=0
     else:
         cart_total_price=0
         for key, value in request.session['cart'].items():
@@ -18,18 +19,23 @@ def index(request):
     return render(request, "drinks/index.html", {
         "drinks": Drink.objects.all(),
         "cart":request.session['cart'],
-        "cart_total_price":str(cart_total_price)
+        "cart_total_price":int(cart_total_price)
     })
     
 def drink(request, drink_id):
     drink = Drink.objects.get(pk=drink_id)
     cart_total_price=0
+    if str(drink_id) not in request.session['cart']:
+        item_quantity = 0
+    else:
+        item_quantity = request.session['cart'][str(drink_id)]['quantity']
     for key, value in request.session['cart'].items():
         cart_total_price += Decimal(value['total_price'])
     return render(request, "drinks/drink.html", {
         "drink":drink,
         "cart":request.session['cart'],
-        "cart_total_price":str(cart_total_price)
+        "cart_total_price":cart_total_price,
+        "item_quantity": int(item_quantity)
     })
     
 def add(request):
@@ -68,14 +74,14 @@ def add_to_cart(request, drink_id):
    
 def view_cart(request):    
     if 'cart' not in request.session:
-            request.session['cart'] = {}
+        request.session['cart'] = {}
     cart_total_price=0
 
     for key, value in request.session['cart'].items():
         cart_total_price += Decimal(value['total_price'])
     return render(request, "drinks/view_cart.html", {
         "cart":request.session['cart'],
-        "cart_total_price":str(cart_total_price)
+        "cart_total_price":cart_total_price
     })
 
 def delete_cartitem(request, drink_id):
