@@ -70,6 +70,7 @@ If the user's cart already has an item from the drink they are looking at, the q
 *Empty cart*
 ![Alt Text](media/readme/mini_cart_items.JPG?raw=true "Mini_Cart_Items")
 *Cart with items*
+
 If the cart is empty, it will display "no items" with a red background.
 If the cart has items, the cart will display each cart item's price per unit, quantity, subtotal for the cart item, and the total cart price.
 The checkout cart will direct the user to the checkout page where they will be able to process payment for their cart.
