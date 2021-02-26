@@ -42,9 +42,11 @@ The description and ingredients fields are optional.
 
 Admin Pages:
 ![Alt Text](media/readme/admin_login.JPG?raw=true "Admin_Login")
+
 *See admin login credentials above*
 
 ![Alt Text](media/readme/admin_index.JPG?raw=true "Admin_Index")
+
 The admin page can be thought of as the backend.
 The "drinks" object's foreign key, "category", is related to the "beverages" object.
 
