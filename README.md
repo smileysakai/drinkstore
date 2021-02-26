@@ -41,6 +41,7 @@ Users will be able to add drinks, assigning it a category (list dropdown), name,
 The description and ingredients fields are optional.
 
 Admin Pages:
+
 ![Alt Text](media/readme/admin_login.JPG?raw=true "Admin_Login")
 
 *See admin login credentials above*
