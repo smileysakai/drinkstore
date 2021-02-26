@@ -79,3 +79,5 @@ Cart calculations will be reflected to any cart changes on this page.
 Payment is done via paypal API. 
 Paypal sandbox credentials above - use the business account to see payment received and the customer account to see payment executed.
 *After payment, the cart does not remove all items; payment details are not saved to the database attached to a specific user. This may be expanded upon in the future.*
+
+![Alt text](media/uploads/cola.jpg?raw=true "Title")
