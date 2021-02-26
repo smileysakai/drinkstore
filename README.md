@@ -28,7 +28,7 @@ Web Framework - https://www.djangoproject.com/
 PayPal API - https://developer.paypal.com/docs/business/javascript-sdk/javascript-sdk-reference/
 
 Index Page:
-![Alt text](media/readme/index.jpg?raw=true "Index")
+![Alt text](media/readme/index.jpg?raw=true)
 *The index page will have 4 drinks available by default.*
 Selecting a drink via the image or the link below the image will bring the user to that specific drink's page.
 Below the available drinks is the user's cart (mini cart). Users will be able to add drinks to their cart for purchase.
