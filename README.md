@@ -72,7 +72,7 @@ If the cart has items, the cart will display each cart item's price per unit, qu
 The checkout cart will direct the user to the checkout page where they will be able to process payment for their cart.
 
 View Cart/Checkout Page:
-![Alt Text](media/readme/cart_checkout.jpg?raw=true "Cart_Checkout")
+![Alt Text](media/readme/cart_checkout.jpg?raw=true)
 *If the cart is empty, the paypal payment button will not be available*
 Users will be able to update quantities of their cart items and remove items form their cart.
 Cart calculations will be reflected to any cart changes on this page.
@@ -80,4 +80,4 @@ Payment is done via paypal API.
 Paypal sandbox credentials above - use the business account to see payment received and the customer account to see payment executed.
 *After payment, the cart does not remove all items; payment details are not saved to the database attached to a specific user. This may be expanded upon in the future.*
 
-![Alt text](media/uploads/cola.jpg?raw=true "Title")
+![Alt text](media/uploads/cola.jpg?raw=true)
