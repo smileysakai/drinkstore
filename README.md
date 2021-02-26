@@ -1,46 +1,46 @@
 # drinkstore
-Pre-requisties to run:
+**Pre-requisties to run:**
 Follow steps as per (https://docs.djangoproject.com/en/3.1/topics/install/#installing-official-release)
 
-Running this app:
+**Running this app:**
 Set python environment variables or follow step 2 of https://docs.djangoproject.com/en/3.1/topics/install/#installing-official-release.
 Navigate to project (drinkstore) folder with cmd and run "python manage.py runserver".
 
-Admin Credentials:
+**Admin Credentials:**
 Username: Admin
 Password: drinkstore
 
-PayPal Sandbox details:
+**PayPal Sandbox details:**
 https://www.sandbox.paypal.com
 
-Sandbox business account:
+**Sandbox business account:**
 sb-y1ewq5206132@business.example.com
 password: "s^6RbzW
 
-Sandbox Customer Account:
+**Sandbox Customer Account:**
 sb-ic3im5206604@personal.example.com
 Password: Bn=W/K5F
    
-Resources used:
+**Resources used:**
 Styling - https://getbootstrap.com/
 jQuery/JavaScript - https://jquery.com/ 
 Web Framework - https://www.djangoproject.com/
 PayPal API - https://developer.paypal.com/docs/business/javascript-sdk/javascript-sdk-reference/
 
-Index Page:
+**Index Page:**
 ![Alt text](media/readme/index.JPG?raw=true)
 *The index page will have 4 drinks available by default.*
 Selecting a drink via the image or the link below the image will bring the user to that specific drink's page.
 Below the available drinks is the user's cart (mini cart). Users will be able to add drinks to their cart for purchase.
 This page also has an "add a new drink" link at the top left of the page.
 
-Add New Drink Page:
+**Add New Drink Page:**
 ![Alt Text](media/readme/add_drink.JPG?raw=true "Add_Drink")
 *The fields for this form were generated using Django's "creating forms from models"*
 Users will be able to add drinks, assigning it a category (list dropdown), name, price and image. 
 The description and ingredients fields are optional.
 
-Admin Pages:
+**Admin Pages:**
 
 ![Alt Text](media/readme/admin_login.JPG?raw=true "Admin_Login")
 
@@ -55,7 +55,7 @@ The "drinks" object's foreign key, "category", is related to the "beverages" obj
 Here shows what groups drinks can be a part of.
 Additional "categories" for drinks may be added here.
 
-Drink Page:
+**Drink Page:**
 ![Alt Text](media/readme/drink.JPG?raw=true "Drink")
 The drink page will show the following information - name, price, category, product details, ingredients and the image for the product.
 This page also shows the user's cart (mini cart) below.
@@ -65,7 +65,7 @@ If a drink is added to your cart, you will be directed back to the index page.
 ![Alt Text](media/readme/drink_cart_rel.JPG?raw=true "Drink_Cart_Rel")
 If the user's cart already has an item from the drink they are looking at, the quantity and button will be reflect this.
 
-Mini Cart:
+**Mini Cart:**
 ![Alt Text](media/readme/mini_cart_empty.JPG?raw=true "Mini_Cart_Empty")
 *Empty cart*
 ![Alt Text](media/readme/mini_cart_items.JPG?raw=true "Mini_Cart_Items")
@@ -74,7 +74,7 @@ If the cart is empty, it will display "no items" with a red background.
 If the cart has items, the cart will display each cart item's price per unit, quantity, subtotal for the cart item, and the total cart price.
 The checkout cart will direct the user to the checkout page where they will be able to process payment for their cart.
 
-View Cart/Checkout Page:
+**View Cart/Checkout Page:**
 ![Alt Text](media/uploads/readme/cart_checkout.JPG?raw=true)
 *If the cart is empty, the paypal payment button will not be available*
 Users will be able to update quantities of their cart items and remove items form their cart.
